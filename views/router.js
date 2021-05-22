@@ -14,5 +14,26 @@ router.route('/posts')
 router.route('/posts/:postId')
   .get(postController.show)
   .put(postController.updatePost)
-  .put(postController.likePost)
+  .post(postController.likePost)
   .delete(postController.removePost)
+
+// * Comments
+
+router.route('/posts/:postId/comments')
+  .post(commentController.createComment)
+
+router.route('/posts/:postId/comments/:commentId')
+  .put(commentController.updateComment)
+  .post(commentController.likeComment)
+  .delete(commentController.removeComment)
+
+// * Users
+
+router.route('/login')
+  .post(userContreoller.login)
+
+router.route('/register')
+  .post(userContreoller.register)
+
+router.route('/profile/:profileId')
+  .put(userContreoller.updateComment)
