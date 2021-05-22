@@ -1,6 +1,6 @@
 export default [
   {
-    username: 'brad',
+    username: 'bradley',
     email: 'brad@email',
     password: 'testing',
     passwordConfirmation: 'testing',
