@@ -1,7 +1,7 @@
 import express from 'express'
 import commentController from '../controllers/comments.js'
 import postController from '../controllers/posts.js'
-import userContreoller from '../controllers/users.js'
+import userController from '../controllers/users.js'
 
 const router = express.Router()
 
@@ -30,10 +30,12 @@ router.route('/posts/:postId/comments/:commentId')
 // * Users
 
 router.route('/login')
-  .post(userContreoller.login)
+  .post(userController.login)
 
 router.route('/register')
-  .post(userContreoller.register)
+  .post(userController.register)
 
 router.route('/profile/:profileId')
-  .put(userContreoller.updateComment)
+  .put(userController.updateProfile)
+
+export default router
