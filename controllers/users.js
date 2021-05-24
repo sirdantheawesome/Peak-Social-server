@@ -46,8 +46,20 @@ async function updateProfile(req, res, next) {
   next()
 }
 
+async function indexProfiles(req, res, next) {
+  console.log('Update Profile Test')
+  next()
+}
+
+async function showProfile(req, res, next) {
+  console.log('Update Profile Test')
+  next()
+}
+
 export default {
   login,
   register,
   updateProfile,
+  indexProfiles,
+  showProfile,
 }

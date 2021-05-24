@@ -35,7 +35,11 @@ router.route('/login')
 router.route('/register')
   .post(userController.register)
 
+router.route('/profile')
+  .get(userController.indexProfiles)
+
 router.route('/profile/:profileId')
   .put(userController.updateProfile)
+  .get(userController.showProfile)
 
 export default router

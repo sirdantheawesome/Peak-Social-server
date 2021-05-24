@@ -53,3 +53,11 @@ POST http://localhost:4000/api/register
 ###
 
 PUT http://localhost:4000/api/profile/{{profileId}}
+
+###
+
+GET http://localhost:4000/api/profile/{{profileId}}
+
+###
+
+GEt http://localhost:4000/api/profile
