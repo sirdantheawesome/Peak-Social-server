@@ -34,7 +34,9 @@ async function login(req, res, next) {
 async function register(req, res, next) {
   console.log('Register Test')
   try {
-    const user = await User.create(req.body)
+    const requestAddCoin = req.body
+    requestAddCoin.peekcoin = 0
+    const user = await User.create(requestAddCoin)
     res.status(201).json(user)
   } catch (error) {
     next(error)
