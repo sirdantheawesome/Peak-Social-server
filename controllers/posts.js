@@ -30,7 +30,15 @@ async function show(req, res, next) {
 }
 
 async function createPost(req, res, next) {
-  console.log('Create Post Test')
+  console.log('Create Post Start...')
+  req.body.user = req.currentUser
+  console.log()
+  try {
+    const newPost = await Post.create(req.body)
+    res.status(201).json(newPost)
+  } catch (e) {
+    next(e)
+  }
   next()
 }
 
