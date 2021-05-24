@@ -43,8 +43,28 @@ async function createPost(req, res, next) {
 }
 
 async function updatePost(req, res, next) {
-  console.log('Update Post Test')
-  next()
+  console.log('Update Post Start...')
+  try {
+    const currentUserId = req.currentUser._id
+    console.log(currentUserId)
+    const post = await Post.findById(req.params.postId)
+    console.log(post)
+
+    if (!post) {
+      throw new NotFound('No User Found')
+    }
+
+    if (!currentUserId.equals(post.user._id)) {
+      return res.status(401).json({ message: 'Unauthorized' })
+    }
+
+    post.set(req.body)
+    post.save()
+
+    res.status(202).json(post)
+  } catch (e) {
+    next(e)
+  }
 }
 
 async function removePost(req, res, next) {
