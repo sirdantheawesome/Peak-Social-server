@@ -1,6 +1,7 @@
 @postId = 123
 @commentId = 123
-@profileId = 123
+@profileId = 60ab798c810731421ce33ffe
+###
 
 # Posts
 GET http://localhost:4000/api/posts
