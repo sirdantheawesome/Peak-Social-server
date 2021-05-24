@@ -1,6 +1,6 @@
 import User from '../models/user.js'
 
-import { NotFound, NotValid } from '../lib/errors.js'
+import { NotFound, NotValid, UserNotMatched } from '../lib/errors.js'
 import jwt from 'jsonwebtoken'
 import { secret } from '../config/environment.js'
 
@@ -46,7 +46,30 @@ async function register(req, res, next) {
 
 async function updateProfile(req, res, next) {
   console.log('Update Profile Test')
-  next()
+  try {
+    const updatedUser = req.body
+    const id = req.params.profileId
+    const currentUserId = req.currentUser._id
+
+    console.log(`newUserData: ${updatedUser}, id: ${id}, currentUserId ${currentUserId}`)
+    const user = await User.findById(id)
+    console.log('User is: ', user)
+    if (!user) {
+      throw new NotFound('User not found')
+    }
+
+    if (!currentUserId.equals(id)) {
+      throw new UserNotMatched('User does not match edit')
+    }
+    user.set(updatedUser)
+    user.save()
+
+    console.log('Updated Profile: ', updatedUser)
+    res.status(202).json(updatedUser)
+  } catch (e) {
+    console.log('Failed to update profile: ', e)
+    next(e)
+  }
 }
 
 async function indexProfiles(req, res, next) {
