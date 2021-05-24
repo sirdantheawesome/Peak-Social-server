@@ -11,23 +11,23 @@ const router = express.Router()
 
 router.route('/posts')
   .get(postController.index)
-  .post(postController.createPost)
+  .post(secureRoute, postController.createPost)
 
 router.route('/posts/:postId')
   .get(postController.show)
-  .put(postController.updatePost)
+  .put(secureRoute, postController.updatePost)
   .post(secureRoute, postController.likePost)
   .delete(postController.removePost)
 
 // * Comments
 
 router.route('/posts/:postId/comments')
-  .post(commentController.createComment)
+  .post(secureRoute, commentController.createComment)
 
 router.route('/posts/:postId/comments/:commentId')
-  .put(commentController.updateComment)
-  .post(commentController.likeComment)
-  .delete(commentController.removeComment)
+  .put(secureRoute, commentController.updateComment)
+  .post(secureRoute, commentController.likeComment)
+  .delete(secureRoute, commentController.removeComment)
 
 // * Users
 
