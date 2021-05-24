@@ -1,5 +1,6 @@
 import User from '../models/user.js'
-import { NotValid } from '../lib/errors.js'
+
+import { NotFound, NotValid } from '../lib/errors.js'
 import jwt from 'jsonwebtoken'
 import { secret } from '../config/environment.js'
 
@@ -49,13 +50,31 @@ async function updateProfile(req, res, next) {
 }
 
 async function indexProfiles(req, res, next) {
-  console.log('Update Profile Test')
-  next()
+  console.log('Index Profile Start...')
+  try {
+    const userList = await User.find()
+    res.status(200).json(userList)
+  } catch (e) {
+    console.log('Fetching Profile Data Failed: ', e)
+    next(e)
+  }
 }
 
 async function showProfile(req, res, next) {
-  console.log('Update Profile Test')
-  next()
+  console.log('Show Profile Start...')
+  const id = req.params.profileId
+  console.log(req.params.profileId)
+  try {
+    const user = await User.findById(id)
+    console.log('Fetched hero data of id: ', id, user)
+    if (!user) {
+      throw new NotFound('User not Found')
+    }
+    res.status(201).json(user)
+  } catch (e) {
+    console.log('Fetching user data failed: ', e)
+    next(e)
+  }
 }
 
 export default {
