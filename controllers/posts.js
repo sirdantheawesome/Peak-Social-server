@@ -1,13 +1,32 @@
-
+import Post from '../models/post.js'
+import User from '../models/user.js'
+import { NotFound } from '../lib/errors.js'
 
 async function index(req, res, next) {
-  console.log('Show Posts Test')
-  next()
+  try {
+    const postList = await Post.find()
+    res.status(200).json(postList)
+    console.log('index Posts works')
+  } catch (error) {
+    next(error)
+  }
+  
+  
 }
 
 async function show(req, res, next) {
-  console.log('Show A Posts Test')
-  next()
+  try {
+    const post = await Post.findById(req.params.postId)
+    if (!post){
+      throw new NotFound('no post found')
+    }
+    res.status(200).json(post)
+    console.log('Show A Posts works')
+  } catch (error) {
+    next(error)
+  }
+  
+  
 }
 
 async function createPost(req, res, next) {
@@ -26,7 +45,34 @@ async function removePost(req, res, next) {
 }
 
 async function likePost(req, res, next) {
-  console.log('Like Post Test')
+  req.body.user = req.currentUser
+  try {
+    const post = await Post.findById(req.params.postId)
+    if (!post){
+      throw new NotFound('no post found')
+    }
+    console.log(req)
+    const currentUser = await User.findById(req.currentUser)
+    if (!currentUser){
+      throw new NotFound('no post found')
+    }
+
+    post.userlikes.push(req.currentUser.id)
+
+    const savedPost = await post.save()
+
+    res.send(savedPost)
+
+    console.log('Liked Post')
+  } catch (error) {
+    next(error)
+  }
+  
+  
+}
+
+async function unlikePost(req, res, next) {
+  console.log('unLiked Post')
   next()
 }
 
@@ -37,4 +83,5 @@ export default {
   updatePost,
   removePost,
   likePost,
+  unlikePost,
 }

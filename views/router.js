@@ -15,6 +15,7 @@ router.route('/posts/:postId')
   .get(postController.show)
   .put(postController.updatePost)
   .post(postController.likePost)
+  .post(postController.unlikePost)
   .delete(postController.removePost)
 
 // * Comments
