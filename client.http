@@ -1,9 +1,9 @@
 @postId = 123
 @commentId = 123
-@profileId = 60ab798c810731421ce33ffe
+@profileId = 60ab8e8adb21914b35b8b9f6
 ###
 
-@token = 123
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiNzk4YzgxMDczMTQyMWNlMzNmZmYiLCJpYXQiOjE2MjE4NjEzNDMsImV4cCI6MTYyMTkwNDU0M30.1YaVOb2BJrTntQyr2vBtmbYsI59KJdX1o7WO61XsvpU
 
 # Posts
 GET http://localhost:4000/api/posts
@@ -51,7 +51,7 @@ POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-  "email": "jon@email",
+  "email": "dan@email",
   "password": "pass"
 }
 
@@ -62,16 +62,28 @@ POST http://localhost:4000/api/register
 content-type: application/json
 
 {
-  "username": "jon",
+  "username": "dan2",
   "password": "pass",
   "passwordConfirmation": "pass",
-  "email": "jon@email"
+  "email": "dan2@email"
 
 }
 
 ###
 
 PUT http://localhost:4000/api/profile/{{profileId}}
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "username":"SirDan",
+  "email":"dan@email",
+  "password":"pass",
+  "passwordConfirmation":"pass",
+  "image":"https://instagram.flhr3-4.fna.fbcdn.net/v/t51.2885-19/s320x320/90252192_146512903332422_4855195378321981440_n.jpg?tp=1&_nc_ht=instagram.flhr3-4.fna.fbcdn.net&_nc_ohc=ONFuSlbBHP0AX9JXsJV&edm=ABfd0MgBAAAA&ccb=7-4&oh=9ae41dbe4c82ad0af2efd95f83b5099d&oe=60AF40EF&_nc_sid=7bff83",
+  "summary":"Dan is Dan",
+  "peekcoin":1000
+}
 
 ###
 

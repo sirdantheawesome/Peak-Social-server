@@ -3,6 +3,8 @@ import commentController from '../controllers/comments.js'
 import postController from '../controllers/posts.js'
 import userController from '../controllers/users.js'
 
+import secureRoute from '../middleware/secureRoute.js'
+
 const router = express.Router()
 
 // * Post
@@ -39,7 +41,7 @@ router.route('/profile')
   .get(userController.indexProfiles)
 
 router.route('/profile/:profileId')
-  .put(userController.updateProfile)
+  .put(secureRoute, userController.updateProfile)
   .get(userController.showProfile)
 
 export default router
