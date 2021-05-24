@@ -1,9 +1,10 @@
-@postId = 123
+@postId = 60abcc1f689a5bb8f0ecd112
 @commentId = 123
 @profileId = 60ab8340f6ef2695f5911ffa
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiNzk4YzgxMDczMTQyMWNlMzNmZmYiLCJpYXQiOjE2MjE4NjcyMzIsImV4cCI6MTYyMTkxMDQzMn0.h9xF4ZM65Xva9hwV3y02kFHuABlsG4AEcyGBCyk1DGo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiY2E5NzNiNzlhMmI4NzRiZWYxMDgiLCJpYXQiOjE2MjE4NzEyNjksImV4cCI6MTYyMTkxNDQ2OX0.A0vozD19Nug58V_T30-9O5sel14n4dJP6xFrpqZIKWM
+
 
 # Posts
 GET http://localhost:4000/api/posts
@@ -26,6 +27,10 @@ GET http://localhost:4000/api/posts/{{postId}}
 
 PUT http://localhost:4000/api/posts/{{postId}}
 
+{
+  "title":"Posting Comments is fun, really really fun... "
+}
+
 ###
 
 POST http://localhost:4000/api/posts/{{postId}}
@@ -42,6 +47,12 @@ DELETE http://localhost:4000/api/posts/{{postId}}
 
 # Comments
 POST http://localhost:4000/api/posts/{{postId}}/comments
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "this is finally a comment!"
+}
 
 ###
 
@@ -62,7 +73,7 @@ POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-  "email": "dan@email",
+  "email": "craig@email",
   "password": "pass"
 }
 

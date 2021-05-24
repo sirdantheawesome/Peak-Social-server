@@ -13,8 +13,6 @@ async function startApp() {
     console.log('something went wrong')
     console.log(error)
   }
-
-
 }
 
 startApp()
