@@ -3,14 +3,21 @@
 @profileId = 60ab798c810731421ce33fff
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiOWFhMzVkYjg1OWVhNDNhYjkyYWYiLCJpYXQiOjE2MjE4NjM4ODMsImV4cCI6MTYyMTkwNzA4M30.ve-pWclPU_HOn7LNeI1mIalSplLGgG1uveE9ZOzocT8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiNzk4YzgxMDczMTQyMWNlMzNmZmYiLCJpYXQiOjE2MjE4NjcyMzIsImV4cCI6MTYyMTkxMDQzMn0.h9xF4ZM65Xva9hwV3y02kFHuABlsG4AEcyGBCyk1DGo
 
 # Posts
 GET http://localhost:4000/api/posts
 
 ###
 POST http://localhost:4000/api/posts
+content-type: application/json
+Authorization: Bearer {{token}}
 
+{
+  "title":"Posting Comments is fun",
+  "text":"...Until it doesn't work...",
+  "image":"https://i.kym-cdn.com/photos/images/newsfeed/001/878/329/dfa.jpg"
+}
 ###
 
 GET http://localhost:4000/api/posts/{{postId}}
@@ -55,7 +62,7 @@ POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-  "email": "jon@email",
+  "email": "dan@email",
   "password": "pass"
 }
 
@@ -85,7 +92,7 @@ Authorization: Bearer {{token}}
   "password":"pass",
   "passwordConfirmation":"pass",
   "image":"https://instagram.flhr3-4.fna.fbcdn.net/v/t51.2885-19/s320x320/90252192_146512903332422_4855195378321981440_n.jpg?tp=1&_nc_ht=instagram.flhr3-4.fna.fbcdn.net&_nc_ohc=ONFuSlbBHP0AX9JXsJV&edm=ABfd0MgBAAAA&ccb=7-4&oh=9ae41dbe4c82ad0af2efd95f83b5099d&oe=60AF40EF&_nc_sid=7bff83",
-  "summary":"Dan is Dan",
+  "summary":"Dan is Not Dan",
   "peekcoin":1000
 }
 
