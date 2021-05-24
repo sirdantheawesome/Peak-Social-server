@@ -3,6 +3,8 @@
 @profileId = 60ab798c810731421ce33ffe
 ###
 
+@token = 123
+
 # Posts
 GET http://localhost:4000/api/posts
 
@@ -46,10 +48,26 @@ DELETE http://localhost:4000/api/posts/{{postId}}/comments/{{commentId}}
 
 #Users
 POST http://localhost:4000/api/login
+Content-Type: application/json
+
+{
+  "email": "jon@email",
+  "password": "pass"
+}
+
 
 ###
 
 POST http://localhost:4000/api/register
+content-type: application/json
+
+{
+  "username": "jon",
+  "password": "pass",
+  "passwordConfirmation": "pass",
+  "email": "jon@email"
+
+}
 
 ###
 
