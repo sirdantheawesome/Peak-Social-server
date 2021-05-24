@@ -10,14 +10,14 @@ async function index(req, res, next) {
   } catch (error) {
     next(error)
   }
-  
-  
+
+
 }
 
 async function show(req, res, next) {
   try {
     const post = await Post.findById(req.params.postId)
-    if (!post){
+    if (!post) {
       throw new NotFound('no post found')
     }
     res.status(200).json(post)
@@ -25,8 +25,8 @@ async function show(req, res, next) {
   } catch (error) {
     next(error)
   }
-  
-  
+
+
 }
 
 async function createPost(req, res, next) {
@@ -48,16 +48,20 @@ async function likePost(req, res, next) {
   req.body.user = req.currentUser
   try {
     const post = await Post.findById(req.params.postId)
-    if (!post){
+    if (!post) {
       throw new NotFound('no post found')
     }
     console.log(req)
-    const currentUser = await User.findById(req.currentUser)
-    if (!currentUser){
-      throw new NotFound('no post found')
-    }
+
 
     post.userlikes.push(req.currentUser.id)
+
+    const user = await User.findById(post.user)
+    user.peekcoin = user.peekcoin + 1
+
+    const savedUser = await user.save()
+
+    console.log(savedUser)
 
     const savedPost = await post.save()
 
@@ -67,8 +71,8 @@ async function likePost(req, res, next) {
   } catch (error) {
     next(error)
   }
-  
-  
+
+
 }
 
 async function unlikePost(req, res, next) {

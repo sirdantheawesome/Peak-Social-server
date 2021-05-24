@@ -3,7 +3,7 @@
 @profileId = 60ab8e8adb21914b35b8b9f6
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiOWFhMzVkYjg1OWVhNDNhYjkyYWYiLCJpYXQiOjE2MjE4NjEyODEsImV4cCI6MTYyMTkwNDQ4MX0.ZEqMMwhb1z1PRRm3XqHWm93T0mUYI3S1W8CcBSKM4g0
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiOWFhMzVkYjg1OWVhNDNhYjkyYWYiLCJpYXQiOjE2MjE4NjM4ODMsImV4cCI6MTYyMTkwNzA4M30.ve-pWclPU_HOn7LNeI1mIalSplLGgG1uveE9ZOzocT8
 
 # Posts
 GET http://localhost:4000/api/posts
@@ -55,7 +55,7 @@ POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-  "email": "dan@email",
+  "email": "jon@email",
   "password": "pass"
 }
 
