@@ -51,7 +51,6 @@ async function updateProfile(req, res, next) {
     const id = req.params.profileId
     const currentUserId = req.currentUser._id
 
-    console.log(`newUserData: ${updatedUser}, id: ${id}, currentUserId ${currentUserId}`)
     const user = await User.findById(id)
     console.log('User is: ', user)
     if (!user) {
