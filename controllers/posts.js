@@ -43,8 +43,28 @@ async function createPost(req, res, next) {
 }
 
 async function updatePost(req, res, next) {
-  console.log('Update Post Test')
-  next()
+  console.log('Update Post Start...')
+  try {
+    const currentUserId = req.currentUser._id
+    console.log(currentUserId)
+    const post = await Post.findById(req.params.postId)
+    console.log(post)
+
+    if (!post) {
+      throw new NotFound('No User Found')
+    }
+
+    if (!currentUserId.equals(post.user._id)) {
+      return res.status(401).json({ message: 'Unauthorized' })
+    }
+
+    post.set(req.body)
+    post.save()
+
+    res.status(202).json(post)
+  } catch (e) {
+    next(e)
+  }
 }
 
 async function removePost(req, res, next) {
@@ -59,23 +79,41 @@ async function likePost(req, res, next) {
     if (!post) {
       throw new NotFound('no post found')
     }
-    console.log(req)
+
+    if (post.userlikes.includes(req.currentUser.id)) {
+      const userIndex = post.userlikes.findIndex(likes => likes === 'req.currentUser.id')
+      post.userlikes.splice(userIndex,1)
+
+      const user = await User.findById(post.user)
+      user.peekcoin = user.peekcoin - 1
+
+      const savedUser = await user.save()
+
+      console.log(savedUser)
+
+      const savedPost = await post.save()
+
+      res.send(savedPost)
+
+      console.log('unLiked Post')
+    } else {
+      post.userlikes.push(req.currentUser.id)
+
+      const user = await User.findById(post.user)
+      user.peekcoin = user.peekcoin + 1
+
+      const savedUser = await user.save()
+
+      console.log(savedUser)
+
+      const savedPost = await post.save()
+
+      res.send(savedPost)
+
+      console.log('Liked Post')
+    }
 
 
-    post.userlikes.push(req.currentUser.id)
-
-    const user = await User.findById(post.user)
-    user.peekcoin = user.peekcoin + 1
-
-    const savedUser = await user.save()
-
-    console.log(savedUser)
-
-    const savedPost = await post.save()
-
-    res.send(savedPost)
-
-    console.log('Liked Post')
   } catch (error) {
     next(error)
   }
@@ -83,10 +121,7 @@ async function likePost(req, res, next) {
 
 }
 
-async function unlikePost(req, res, next) {
-  console.log('unLiked Post')
-  next()
-}
+
 
 export default {
   index,
@@ -95,5 +130,4 @@ export default {
   updatePost,
   removePost,
   likePost,
-  unlikePost,
 }

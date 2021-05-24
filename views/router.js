@@ -17,8 +17,7 @@ router.route('/posts/:postId')
   .get(postController.show)
   .put(secureRoute, postController.updatePost)
   .post(secureRoute, postController.likePost)
-  .post(secureRoute, postController.unlikePost)
-  .delete(secureRoute, postController.removePost)
+  .delete(postController.removePost)
 
 // * Comments
 
