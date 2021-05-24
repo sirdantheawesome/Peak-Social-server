@@ -19,7 +19,7 @@ export default function secureRoute(req, res, next) {
       console.log('Unauthorized Bad Token')
       return res.status(401).json({ message: 'Unauthorized' })
     }
-    const user = await User.findById(payload.profileId)
+    const user = await User.findById(payload.userId)
     if (!user) {
       console.log('Unauthorized Bad User')
       return res.status(401).json({ message: 'Unauthorized' })
