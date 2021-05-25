@@ -61,9 +61,11 @@ async function removeComment(req, res, next) {
       return res.status(401).send({ message: 'Unauthorized - did you make this comment' })
     }
     console.log('soooo close...')
-    await comment.deleteOne()
+    await comment.remove()
+    const savedPost = await post.save()
+    res.send(savedPost)
     console.log('comment deleted')
-    res.sendStatus(204)
+
   } catch (err) {
 
     next(err)
