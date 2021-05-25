@@ -32,18 +32,40 @@ async function show(req, res, next) {
 async function createPost(req, res, next) {
   console.log('Create Post Start...')
   req.body.user = req.currentUser
-  console.log()
   try {
     const newPost = await Post.create(req.body)
     res.status(201).json(newPost)
   } catch (e) {
     next(e)
   }
-  next()
 }
 
 async function updatePost(req, res, next) {
   console.log('Update Post Start...')
+  try {
+    const currentUserId = req.currentUser._id
+    const post = await Post.findById(req.params.postId)
+
+    if (!post) {
+      throw new NotFound('No User Found')
+    }
+
+    if (!currentUserId.equals(post.user._id)) {
+      return res.status(401).json({ message: 'Unauthorized' })
+    }
+
+    post.set(req.body)
+    post.save()
+
+    console.log('Post Update Successful: ', req.body)
+    res.status(202).json(post)
+  } catch (e) {
+    next(e)
+  }
+}
+
+async function removePost(req, res, next) {
+  console.log('Remove Post Started...')
   try {
     const currentUserId = req.currentUser._id
     console.log(currentUserId)
@@ -57,19 +79,13 @@ async function updatePost(req, res, next) {
     if (!currentUserId.equals(post.user._id)) {
       return res.status(401).json({ message: 'Unauthorized' })
     }
+    await post.deleteOne()
 
-    post.set(req.body)
-    post.save()
-
-    res.status(202).json(post)
+    res.sendStatus(204)
   } catch (e) {
     next(e)
   }
-}
 
-async function removePost(req, res, next) {
-  console.log('Remove Post Test')
-  next()
 }
 
 async function likePost(req, res, next) {
@@ -82,7 +98,7 @@ async function likePost(req, res, next) {
 
     if (post.userlikes.includes(req.currentUser.id)) {
       const userIndex = post.userlikes.findIndex(likes => likes === 'req.currentUser.id')
-      post.userlikes.splice(userIndex,1)
+      post.userlikes.splice(userIndex, 1)
 
       const user = await User.findById(post.user)
       user.peekcoin = user.peekcoin - 1
