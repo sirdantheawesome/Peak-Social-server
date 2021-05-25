@@ -1,9 +1,9 @@
 @postId = 60abcc1f689a5bb8f0ecd112
-@commentId = 123
-@profileId = 60ab8340f6ef2695f5911ffa
+@commentId = 60acb7999160e2e5c31a6bf4
+@profileId = 60abca973b79a2b874bef109
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiY2E5NzNiNzlhMmI4NzRiZWYxMDgiLCJpYXQiOjE2MjE4NzEyNjksImV4cCI6MTYyMTkxNDQ2OX0.A0vozD19Nug58V_T30-9O5sel14n4dJP6xFrpqZIKWM
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiY2E5NzNiNzlhMmI4NzRiZWYxMDgiLCJpYXQiOjE2MjE5Mjk5MDMsImV4cCI6MTYyMTk3MzEwM30.d-MgrontSdIY8OX2-Xk5M2twU1vHubf0uDM2vsJ6NYU
 
 
 # Posts
@@ -53,20 +53,33 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "text": "this is finally a comment!"
+  "text": "this is finally a third comment!"
 }
 
 ###
 
 PUT http://localhost:4000/api/posts/{{postId}}/comments/{{commentId}}
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text":"this is an second edited comment... :)"
+}
+
 
 ###
-
+//Liked Comments
 POST http://localhost:4000/api/posts/{{postId}}/comments/{{commentId}}
+content-type: application/json
+Authorization: Bearer {{token}}
+
+
 
 ###
 
 DELETE http://localhost:4000/api/posts/{{postId}}/comments/{{commentId}}
+content-type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
