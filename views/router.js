@@ -29,13 +29,7 @@ router.route('/posts/:postId/comments/:commentId')
   .post(secureRoute, commentController.likeComment)
   .delete(secureRoute, commentController.removeComment)
 
-// * Users
-
-router.route('/login')
-  .post(userController.login)
-
-router.route('/register')
-  .post(userController.register)
+// * User Profiles
 
 router.route('/profile')
   .get(userController.indexProfiles)
@@ -43,5 +37,13 @@ router.route('/profile')
 router.route('/profile/:profileId')
   .put(secureRoute, userController.updateProfile)
   .get(userController.showProfile)
+
+// * Auth
+
+router.route('/login')
+  .post(userController.login)
+
+router.route('/register')
+  .post(userController.register)
 
 export default router

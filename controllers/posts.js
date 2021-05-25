@@ -68,9 +68,7 @@ async function removePost(req, res, next) {
   console.log('Remove Post Started...')
   try {
     const currentUserId = req.currentUser._id
-    console.log(currentUserId)
     const post = await Post.findById(req.params.postId)
-    console.log(post)
 
     if (!post) {
       throw new NotFound('No User Found')
@@ -81,6 +79,7 @@ async function removePost(req, res, next) {
     }
     await post.deleteOne()
 
+    console.log('Post deleted Successfully')
     res.sendStatus(204)
   } catch (e) {
     next(e)
