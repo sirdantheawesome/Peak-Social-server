@@ -88,6 +88,7 @@ async function likeComment(req, res, next) {
       const user = await User.findById(post.user)
       user.peekcoin = user.peekcoin - 1
       const savedUser = await user.save()
+      console.log(savedUser)
       const savedPost = await post.save()
       res.send(savedPost)
       console.log('unLiked Comment')
@@ -96,6 +97,7 @@ async function likeComment(req, res, next) {
       const user = await User.findById(post.user)
       user.peekcoin = user.peekcoin + 1
       const savedUser = await user.save()
+      console.log(savedUser)
       const savedPost = await post.save()
       res.send(savedPost)
       console.log('Liked Comment')
