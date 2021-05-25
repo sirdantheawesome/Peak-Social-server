@@ -1,9 +1,9 @@
-@postId = 60abcc1f689a5bb8f0ecd112
-@commentId = 60acb7999160e2e5c31a6bf4
+@postId = 60acc063e2442469640d0360
+@commentId = 60acc170e2442469640d0361
 @profileId = 60abca973b79a2b874bef109
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiY2E5NzNiNzlhMmI4NzRiZWYxMDgiLCJpYXQiOjE2MjE5Mjk5MDMsImV4cCI6MTYyMTk3MzEwM30.d-MgrontSdIY8OX2-Xk5M2twU1vHubf0uDM2vsJ6NYU
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFjYzAxY2UyNDQyNDY5NjQwZDAzNWYiLCJpYXQiOjE2MjE5MzQxNDAsImV4cCI6MTYyMTk3NzM0MH0.jgfQCO-JZzM1eglQcBVLBC_MMDiFaG8nV9X2SIAWsbo
 
 
 # Posts
@@ -88,7 +88,7 @@ POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-  "email": "craig@email",
+  "email": "dan2@email",
   "password": "pass"
 }
 
