@@ -1,9 +1,9 @@
-@postId = 60acc063e2442469640d0360
-@commentId = 60acc170e2442469640d0361
+@postId = 60abc02ba09fae5daa0f82c9
+@commentId = 60acb7999160e2e5c31a6bf4
 @profileId = 60abca973b79a2b874bef109
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFjYzAxY2UyNDQyNDY5NjQwZDAzNWYiLCJpYXQiOjE2MjE5MzQxNDAsImV4cCI6MTYyMTk3NzM0MH0.jgfQCO-JZzM1eglQcBVLBC_MMDiFaG8nV9X2SIAWsbo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFiYzAwMTA1N2EzYzVkOTUxZTgxZmEiLCJpYXQiOjE2MjE5MzM4MTMsImV4cCI6MTYyMTk3NzAxM30.LW2QY4IKEC0uUOvzdase9vkNQKkQwF79NrPpgRqEwMQ
 
 
 # Posts
@@ -44,7 +44,7 @@ Authorization: Bearer {{token}}
 ###
 
 DELETE http://localhost:4000/api/posts/{{postId}}
-
+Authorization: Bearer {{token}}
 ###
 
 # Comments
