@@ -90,7 +90,7 @@ async function removePost(req, res, next) {
 async function likePost(req, res, next) {
   req.body.user = req.currentUser
   try {
-    const post = await Post.findById(req.params.postId)
+    const post = await Post.findById(req.params.postId).populate('user')
     if (!post) {
       throw new NotFound('no post found')
     }
