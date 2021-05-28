@@ -61,7 +61,7 @@ async function updateProfile(req, res, next) {
       throw new UserNotMatched('User does not match edit')
     }
     user.set(updatedUser)
-    user.save()
+    await user.save()
 
     console.log('Updated Profile: ', updatedUser)
     res.status(202).json(updatedUser)

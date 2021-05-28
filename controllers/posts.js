@@ -55,7 +55,7 @@ async function updatePost(req, res, next) {
     }
 
     post.set(req.body)
-    post.save()
+    await post.save()
 
     console.log('Post Update Successful: ', req.body)
     res.status(202).json(post)
