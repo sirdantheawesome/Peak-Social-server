@@ -4,7 +4,7 @@ import { NotFound } from '../lib/errors.js'
 
 async function index(req, res, next) {
   try {
-    const postList = await Post.find()
+    const postList = await Post.find().populate('user')
     res.status(200).json(postList)
     console.log('index Posts works')
   } catch (error) {
