@@ -35,9 +35,10 @@ async function login(req, res, next) {
 async function register(req, res, next) {
   console.log('Register Test')
   try {
-    const requestAddCoin = req.body
-    requestAddCoin.peekcoin = 0
-    const user = await User.create(requestAddCoin)
+    const newBody = req.body
+    newBody.image = 'https://www.nacdnet.org/wp-content/uploads/2016/06/person-placeholder.jpg'
+    newBody.peekcoin = 0
+    const user = await User.create(newBody)
     res.status(201).json(user)
   } catch (error) {
     next(error)
