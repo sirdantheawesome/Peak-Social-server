@@ -1,17 +1,16 @@
 import app from './app.js'
 import connectToDb from './db/connectToDb.js'
-
+import { port } from './config/environment.js' //* <-- This is new
 
 async function startApp() {
-
   try {
     await connectToDb()
-    console.log('database working')
-    app.listen(4000, () => console.log('i think im working'))
+    console.log('Database has connected!')
 
-  } catch (error) {
-    console.log('something went wrong')
-    console.log(error)
+    app.listen(port, () => console.log('Express is now running'))
+  } catch (e) {
+    console.log('Something went wrong starting app..')
+    console.log(e)
   }
 }
 
