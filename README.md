@@ -1,5 +1,9 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) GA Project 3 - Peak Social Media
 
+## Overview
+
+For our third project at GA we had to make a full stack web app using the React framework for the front end and Express as for the back end (MERN stack). I worked in a group of three with Craig Clement and Bradley Bernard. We could come up with our own idea for the project but we all had to work on at least a bit of the front and back end each.
+
 ### Links
 
 https://peek3.netlify.app/ <-- Try it here!
@@ -16,11 +20,11 @@ https://github.com/sirdantheawesome/Peak-Social-server <-- Backend
 
 ## The Brief
 
-- Small groups of 3-4 (in this case 3)
-- 1 week to create
-- Fullstack using MERN stack
+- Small groups of 3-4 (in this case 3).
+- 1 week to create.
+- Fullstack using MERN stack.
 
-## Concept
+## Approach
 
 The Idea for the Peak Social Media was to mimic popular social media sites and implement a lot of the core funtionality. The twist we decided to put in was to incorporate points which you gain for interacting on the site and other users.
 
@@ -28,12 +32,12 @@ The Idea for the Peak Social Media was to mimic popular social media sites and i
 
 We started off the planning by discussing the core features we wanted in the app, these were:
 
-- User sign up and login
-- User profile editing with profile pictures
-- Making posts and having them show up on the feed
-- Users interacting with posts (Like, comment, edit, remove)
-- Mobile scaling
-- Post filtering and search
+- User sign up and login.
+- User profile editing with profile pictures.
+- Making posts and having them show up on the feed.
+- Users interacting with posts (Like, comment, edit, remove).
+- Mobile scaling.
+- Post filtering and search.
 
 We then moved onto whiteboarding the app, laying out roughly how it would look and function.
 
@@ -106,7 +110,7 @@ router.route("/register").post(userController.register);
 export default router;
 ```
 
-After the backend was working with its first version we moved on to the frontend. I was in charge of setting up the nav bar initially and then moved on to the actually posts. The posts included displaying content, users who posted and liked, changing based on which user was logged in etc. One thing that was important to me was that it all worked intuitively and would be easy to navigate due to all the linked sections like user names and icons.
+After the backend was working with its first version we moved on to the frontend. I was in charge of setting up the nav bar initially and then moved on to the actual posts. The posts included displaying content, users who posted and liked, changing based on which user was logged in etc. One thing that was important to me was that it all worked intuitively and would be easy to navigate due to all the linked sections like user names and icons.
 
 ```js
 return (
@@ -245,13 +249,13 @@ We used a CSS framework called Bulma to style the frontend, we tried to keep it 
 <img src='ScreenCaps\Profile-site.png'>
 <img src='ScreenCaps\Modal.png'>
 
-## Challenges
-
-In general I think we managed to get a lot done in the time frame we had considering how much goes into a social media site but I do think time limitations were a challenge. We had some stretch goals we didn't manage to achieve which we would have been able to given more time. I also underestimated how long simply just the Post display card would take to make and that had most of my time throughout the entire project.
-
 ## What I learnt
 
 We had to go back and change the back end a couple of times and shift around how we did things on the front end a few times. I think in general I learnt that much more thorough planning at the beginning saves a lot of time later on and is well worth doing. Also communicating with team mates was very important and something we did well on this project, without this I think it would have been much more challenging.
+
+## Challenges
+
+In general I think we managed to get a lot done in the time frame we had considering how much goes into a social media site but I do think time limitations were a challenge. We had some stretch goals we didn't manage to achieve which we would have been able to given more time. I also underestimated how long simply just the Post display card would take to make and that had most of my time throughout the entire project.
 
 ## Wins
 
