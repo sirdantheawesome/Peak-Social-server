@@ -20,9 +20,10 @@ https://github.com/sirdantheawesome/Peak-Social-server <-- Backend
 
 ## The Brief
 
-- Small groups of 3-4 (in this case 3).
-- 1 week to create.
-- Fullstack using MERN stack.
+- Make a website using MERN full stack.
+- Work in small groups of three or four.
+- Complete the project in one week.
+- Deploy the project online and connect the front end to the back end.
 
 ## Approach
 
